@@ -60,6 +60,10 @@ def handler(data: dict, context: object) -> Dict[str, Any]:
             cpu_env.get_cpu_data(i).append(data[f'cpu_percent-{i}'])
             ret[f'cpu_{i}_1min_avg'] = cpu_env.get_cpu_data(i).avg(12)
             ret[f'cpu_{i}_1hr_avg'] = cpu_env.get_cpu_data(i).avg(720)
+
+        # active memory monitor
+        ret['active_mem_percent'] = 100 * data['virtual_memory-active'] / data['virtual_memory-total']
+
     except Exception as e:
         ret['error'] = str(e)
 

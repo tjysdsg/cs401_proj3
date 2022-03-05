@@ -1,0 +1,1 @@
+redis-cli get jt304-proj3-output
